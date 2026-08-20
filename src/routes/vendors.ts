@@ -6,13 +6,13 @@ const router = Router();
 router.get ("/", async(req: Request, res: Response) => {
     try {
         const result = await pool.query(
-            "SELECT * FROM vendors",
+            "SELECT * FROM vendor",
         );
 
     res.status(200).json(result.rows);
      
     } catch (error) {
-    console.error(error),
+    console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
     }
 });
