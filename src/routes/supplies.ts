@@ -20,6 +20,11 @@ router.get("/vendor/:vendorId", async (req: Request, res: Response) => {
 router.put("/:vendorId/:productId", async (req: Request, res: Response) => { 
   const { vendorId, productId } = req.params;
   const { stock_quantity } = req.body;
+
+  if (stock_quantity === undefined) {
+    return res.status(400).json({ error: "stock_quantity is required" });
+  }
+
   try {
     const result = await pool.query (
       "UPDATE supplies SET stock_quantity = $1 WHERE vendor_id = $2 AND product_id = $3 RETURNING *",
