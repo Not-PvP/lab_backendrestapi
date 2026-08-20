@@ -17,8 +17,8 @@ router.get("/:orderId", async (req: Request, res: Response) => {
 router.post("/", async (req: Request, res: Response) => {
   const { order_id, product_id, quantity, discount } = req.body;
 
-  if (!order_id || !product_id) {
-    return res.status(400).json({ error: "order_id and product_id are required" });
+  if (!order_id || !product_id || quantity === undefined) {
+    return res.status(400).json({ error: "order_id, product_id, and quantity are required" });
   }
 
   try {
