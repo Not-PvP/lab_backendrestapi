@@ -1,5 +1,4 @@
 import { Router, Request, Response } from "express";
-
 import { pool } from "../db";
 
 const router = Router();
@@ -68,3 +67,5 @@ router.delete("/:id", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+export default router;
